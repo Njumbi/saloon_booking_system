@@ -1,0 +1,46 @@
+<%-include('./includes/head') %>
+
+<body>
+    <%- include('./includes/navbar')%>
+
+    <div class="container" style="margin-top: 10px">
+        <div class="row" style="margin: 6px; float: right;">
+            <button type="button" class="btn btn-outline-dark btn-lg" data-toggle="modal"
+                data-target="#addServiceModal">Add
+                User Services</button>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="addServiceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Services</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="add_user_services_form" method="POST" action="/services/add">
+                        <div class="modal-body">
+                            <input type="hidden" name="_csrf" value="<%=csrfToken %>" id="csrf">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect2">Services</label>
+                                <input type="text" class="form-control" id="services" placeholder="" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-bordered" id="services_table">
+
+        </table>
+
+    </div>
+
+    <%- include('./includes/footer')%>
